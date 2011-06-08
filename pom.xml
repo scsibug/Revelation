@@ -21,6 +21,12 @@
       <version>3.0</version>
     </dependency>
     <dependency>
+      <groupId>com.google.guiceberry</groupId>
+      <artifactId>guiceberry</artifactId>
+      <version>3.0.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.8.2</version>
