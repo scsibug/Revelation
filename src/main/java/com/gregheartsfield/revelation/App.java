@@ -1,13 +1,14 @@
 package com.gregheartsfield.revelation;
 
-/**
- * Hello world!
- *
- */
-public class App 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
+public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        Injector injector = Guice.createInjector(new RevelationModule());
+        RevelationServer revServ = injector.getInstance(RevelationServer.class);
+        revServ.run();
     }
 }
