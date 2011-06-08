@@ -2,5 +2,5 @@ package com.gregheartsfield.revelation;
 
 import java.util.Vector;
 
-public class ChangeSet extends Vector {
+public class ChangeLog extends Vector {
 }
