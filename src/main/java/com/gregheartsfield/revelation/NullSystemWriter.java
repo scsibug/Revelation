@@ -4,6 +4,13 @@ public class NullSystemWriter implements TargetSystemWriter {
     int changes_applied = 0;
     int changes_unapplied = 0;
 
+    public boolean isInitialized() {
+        return true;
+    }
+
+    public void initialize() throws TargetInitializationException {
+    }
+
     public void apply(ChangeSet cs) {
         changes_applied++;
     }

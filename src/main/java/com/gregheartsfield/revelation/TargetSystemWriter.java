@@ -5,6 +5,8 @@ package com.gregheartsfield.revelation;
  */
 
 public interface TargetSystemWriter {
+    public boolean isInitialized();
+    public void initialize() throws TargetInitializationException;
     public void apply(ChangeSet cs);
     public void unapply(ChangeSet cs);
 }
