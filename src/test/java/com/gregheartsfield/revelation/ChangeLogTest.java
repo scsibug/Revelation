@@ -1,6 +1,6 @@
 package com.gregheartsfield.revelation;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import com.google.inject.Guice;
 import com.google.inject.AbstractModule;
@@ -15,6 +15,7 @@ public class ChangeLogTest {
     @Before
     public void setup() {
         injector = Guice.createInjector(new Env());
+        cl = injector.getInstance(ChangeLog.class);
     }
 
     @After
@@ -24,8 +25,8 @@ public class ChangeLogTest {
     }
 
     @Test
-    public void testNothing() throws Exception {
-        assertTrue(true);
+    public void changeLogNotNull() throws Exception {
+        assertNotNull(cl);
     }
 
     public class Env extends AbstractModule{
