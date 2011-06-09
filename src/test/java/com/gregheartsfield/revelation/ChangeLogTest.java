@@ -31,15 +31,23 @@ public class ChangeLogTest {
     }
 
     @Test
-    @Inject
-    public void newChangeSet() throws Exception {
+    public void newChangeSet() {
         ChangeSet cs = injector.getInstance(ChangeSet.class);
         assertNotNull(cs);
+        cl.addChangeSet(cs);
+        assertEquals(1, cl.size());
     }
 
-    public class Env extends AbstractModule{
-        protected void configure() {
-            bind(TargetSystemWriter.class).to(NullSystemWriter.class);
-        }
+    @Test
+    public void changeSetOrder() {
+        ChangeSet first = injector.getInstance(ChangeSet.class);
+        ChangeSet second = injector.getInstance(ChangeSet.class);
+        cl.addChangeSet(first);
+        assertEquals(1, cl.size());
+        cl.addChangeSet(second);
+        assertEquals(2, cl.size());
+        assertEquals(first, cl.elementAt(0));
+        assertEquals(second, cl.elementAt(1));
     }
+
 }
