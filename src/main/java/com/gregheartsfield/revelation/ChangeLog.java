@@ -10,13 +10,9 @@ import com.google.inject.Inject;
 public class ChangeLog {
     Vector<ChangeSet> log = new Vector<ChangeSet>();
     
-    /*
-    @Inject
-    public ChangeSet newChangeSet(ChangeSet cs) {
+    public void addChangeSet(ChangeSet cs) {
         log.add(cs);
-        return cs;
     }
-    */
 
     public int size() {
         return log.size();
