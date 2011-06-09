@@ -71,14 +71,16 @@
       <artifactId>guice</artifactId>
       <version>3.0</version>
     </dependency>
-    <!--
     <dependency>
-      <groupId>com.google.guiceberry</groupId>
-      <artifactId>guiceberry</artifactId>
-      <version>3.0.4</version>
-      <scope>test</scope>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.6.1</version>
     </dependency>
-    -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.6.1</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
