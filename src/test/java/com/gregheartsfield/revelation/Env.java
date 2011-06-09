@@ -6,5 +6,6 @@ import com.google.inject.Singleton;
 public class Env extends AbstractModule{
     protected void configure() {
         bind(TargetSystemWriter.class).to(NullSystemWriter.class).in(Singleton.class);
+        bind(NullStore.class).in(Singleton.class);
     }
 }

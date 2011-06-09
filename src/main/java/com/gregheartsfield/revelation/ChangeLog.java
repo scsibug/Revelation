@@ -1,7 +1,6 @@
 package com.gregheartsfield.revelation;
 
 import java.util.Vector;
-import com.google.inject.Inject;
 
 /**
  *  Ordered list of changesets
