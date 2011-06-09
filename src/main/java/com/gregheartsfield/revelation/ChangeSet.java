@@ -30,4 +30,12 @@ public class ChangeSet {
         return is_baseline;
     }
 
+    public String getId() {
+        return id;
+    }
+    
+    public Date getCreationDate() {
+        return creation_date;
+    }
+
 }

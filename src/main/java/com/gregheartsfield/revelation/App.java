@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 public class App
 {
 
-
     public static void main( String[] args )
     {
         final Logger logger = LoggerFactory.getLogger(App.class);
@@ -18,4 +17,5 @@ public class App
         RevelationServer revServ = injector.getInstance(RevelationServer.class);
         revServ.run();
     }
+
 }
