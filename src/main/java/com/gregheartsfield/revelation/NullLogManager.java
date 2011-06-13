@@ -2,12 +2,19 @@ package com.gregheartsfield.revelation;
 
 import com.google.inject.Inject;
 
-public class NullSystemReader implements TargetSystemReader {
+public class NullLogManager implements LogManager {
     NullStore ns;
 
     @Inject
-    public NullSystemReader(NullStore ns) {
+    public NullLogManager(NullStore ns) {
         this.ns = ns;
+    }
+
+    public boolean isInitialized() {
+        return true;
+    }
+
+    public void initialize() throws TargetInitializationException {
     }
 
     public ChangeLog getChangeLog() {

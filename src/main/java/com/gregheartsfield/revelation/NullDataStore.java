@@ -1,14 +1,15 @@
 package com.gregheartsfield.revelation;
 
-public class NullSystemWriter implements TargetSystemWriter {
+import com.google.inject.Inject;
+
+public class NullDataStore implements DataStore {
     int changes_applied = 0;
     int changes_unapplied = 0;
-
-    public boolean isInitialized() {
-        return true;
-    }
-
-    public void initialize() throws TargetInitializationException {
+    NullStore ns;
+    
+    @Inject
+    public NullDataStore (NullStore ns) {
+        this.ns = ns;
     }
 
     public void apply(ChangeSet cs) {
