@@ -1,7 +1,5 @@
 package com.gregheartsfield.revelation;
 
-import com.google.inject.Inject;
-
 // Dummy data store that keeps track of a single integer.
 
 public class NullDataStore {
@@ -23,8 +21,17 @@ public class NullDataStore {
         store *= x;
     }
 
+    // Handles multiply unapply
+    public void multiply(double x) {
+        store = (int) (store * x);
+    }
+
     public void subtract(int x) {
         store -= x;
+    }
+
+    public int getStoreValue() {
+        return store;
     }
 
     public void incApply() {

@@ -1,6 +1,5 @@
 package com.gregheartsfield.revelation;
 
-import com.google.inject.Guice;
 import com.google.inject.Inject;
 
 public class RevelationServer

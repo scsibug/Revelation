@@ -44,6 +44,7 @@ public class NullChangeSet extends ChangeSet {
         case MULTIPLY:
             ds.multiply(quantity);
         }
+        ds.incApply();
     }
 
     public boolean canUnapply() {
@@ -62,9 +63,12 @@ public class NullChangeSet extends ChangeSet {
             break;
         case SUBTRACT:
             ds.subtract(-quantity);
+            break;
         case MULTIPLY:
-            ds.multiply(1/quantity);
+            ds.multiply(1.0/quantity);
+            break;
         }
+        ds.incUnapply();
     }
 
 }

@@ -1,7 +1,6 @@
 package com.gregheartsfield.revelation;
 
 import java.util.Date;
-import com.google.inject.Inject;
 
 /**
  *  The definition of a single change at the lowest level that can be applied.
@@ -25,6 +24,10 @@ public abstract class ChangeSet {
     
     public Date getCreationDate() {
         return creation_date;
+    }
+
+    public void setCreationDate(Date creation_date) {
+        this.creation_date = creation_date;
     }
 
     abstract public void apply();
