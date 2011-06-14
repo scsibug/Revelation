@@ -1,6 +1,6 @@
 package com.gregheartsfield.revelation;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,21 +9,13 @@ import org.slf4j.LoggerFactory;
  *  Ordered list of changesets
  */
 
-public class ChangeLog {
+public class ChangeLog extends ArrayList<ChangeSet> {
     final Logger logger = LoggerFactory.getLogger(ChangeLog.class);
 
-    Vector<ChangeSet> log = new Vector<ChangeSet>();
-    
+    // Add changeset to end of log
     public void addChangeSet(ChangeSet cs) {
         logger.debug("Adding change set: "+cs.getId());
-        log.add(cs);
+        this.add(cs);
     }
 
-    public int size() {
-        return log.size();
-    }
-
-    public ChangeSet elementAt(int i) {
-        return log.elementAt(i);
-    }
 }

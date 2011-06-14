@@ -46,8 +46,8 @@ public class ChangeLogTest {
         assertEquals(1, cl.size());
         cl.addChangeSet(second);
         assertEquals(2, cl.size());
-        assertEquals(first, cl.elementAt(0));
-        assertEquals(second, cl.elementAt(1));
+        assertEquals(first, cl.get(0));
+        assertEquals(second, cl.get(1));
     }
 
 }
