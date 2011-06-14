@@ -30,7 +30,6 @@ public class ChangeLogTest {
         assertNotNull(cl);
     }
 
-    @Test
     public void newChangeSet() {
         ChangeSet cs = injector.getInstance(ChangeSet.class);
         assertNotNull(cs);
@@ -40,8 +39,8 @@ public class ChangeLogTest {
 
     @Test
     public void changeSetOrder() {
-        ChangeSet first = injector.getInstance(ChangeSet.class);
-        ChangeSet second = injector.getInstance(ChangeSet.class);
+        ChangeSet first = injector.getInstance(NullChangeSet.class);
+        ChangeSet second = injector.getInstance(NullChangeSet.class);
         cl.addChangeSet(first);
         assertEquals(1, cl.size());
         cl.addChangeSet(second);

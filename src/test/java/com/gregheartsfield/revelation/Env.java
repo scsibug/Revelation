@@ -8,5 +8,6 @@ public class Env extends AbstractModule{
         bind(LogManager.class).to(NullLogManager.class);
         bind(NullDataStore.class).in(Singleton.class);
         bind(NullStore.class).in(Singleton.class);
+        bind(NullChangeSet.class);
     }
 }

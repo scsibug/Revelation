@@ -1,33 +1,34 @@
 package com.gregheartsfield.revelation;
 
 import static org.junit.Assert.*;
-import org.junit.*;
 
 import com.google.inject.Guice;
 import com.google.inject.AbstractModule;
 import com.google.inject.Injector;
 import com.google.inject.Inject;
 
-public class ChangeSetTest {
-    NullChangeSet cs;
+import org.junit.*;
+
+public class NullMigrationProviderTest {
+    NullMigrationProvider mp;
     Injector injector;
 
     @Before
     public void setup() {
+        mp = new NullMigrationProvider();
         injector = Guice.createInjector(new Env());
-        cs = injector.getInstance(NullChangeSet.class);
+        //ChangeSet first = injector.getInstance(ChangeSet.class);
     }
 
     @After
     public void tearDown() {
-        cs = null;
+        mp = null;
         injector = null;
     }
 
     @Test
-    public void deltaDefault() {
-        assertFalse("By default, changesets are deltas, not baselines",
-                    cs.getIsBaseline());
+    public void changeLogNotNull() throws Exception {
+        assertNotNull(mp);
     }
 
 }
