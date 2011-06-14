@@ -7,7 +7,7 @@ import com.google.inject.Inject;
  *  The definition of a single change at the lowest level that can be applied.
  */
 
-public class ChangeSet {
+public abstract class ChangeSet {
     String id; // globally unique identifier
     Date creation_date;
     boolean is_baseline = false; // Accounts for all previous changesets
@@ -26,5 +26,8 @@ public class ChangeSet {
     public Date getCreationDate() {
         return creation_date;
     }
+
+    abstract public void apply();
+    abstract public void unapply();
 
 }
