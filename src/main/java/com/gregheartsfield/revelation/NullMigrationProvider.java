@@ -4,7 +4,7 @@ package com.gregheartsfield.revelation;
  * Source of migration definitions.
  */
 
-public class NullMigrationProvider {
+public class NullMigrationProvider implements MigrationProvider {
     ChangeLog cl;
 
     public NullMigrationProvider() {
