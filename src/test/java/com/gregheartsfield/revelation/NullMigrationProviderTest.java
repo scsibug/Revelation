@@ -17,7 +17,6 @@ public class NullMigrationProviderTest {
     public void setup() {
         mp = new NullMigrationProvider();
         injector = Guice.createInjector(new Env());
-        //ChangeSet first = injector.getInstance(ChangeSet.class);
     }
 
     @After
@@ -27,8 +26,21 @@ public class NullMigrationProviderTest {
     }
 
     @Test
-    public void changeLogNotNull() throws Exception {
+    public void changeLogNotNull() {
         assertNotNull(mp);
+        assertEquals(0, mp.getChangeLog().size());
+    }
+
+    @Test
+    public void getChangeLog() {
+        NullChangeSet first = injector.getInstance(NullChangeSet.class);
+        NullChangeSet second = injector.getInstance(NullChangeSet.class);
+        mp.addChangeSet(first);
+        assertEquals("ChangeLog size with 1 ChangeSet", 1, mp.getChangeLog().size());
+        mp.addChangeSet(second);
+        assertEquals("ChangeLog size with 2 ChangeSets", 2, mp.getChangeLog().size());
+        assertEquals("First ChangeSet is at position zero", first, mp.getChangeLog().get(0));
+        assertEquals("Second ChangeSet is at position one", second, mp.getChangeLog().get(1));
     }
 
 }
