@@ -14,7 +14,7 @@ public class NullLogManager implements LogManager {
         return true;
     }
 
-    public void initialize() throws TargetInitializationException {
+    public void initialize() {
     }
 
     public ChangeLog getChangeLog() {
