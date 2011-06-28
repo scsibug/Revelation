@@ -6,4 +6,6 @@ package com.gregheartsfield.revelation;
 
 public interface MigrationProvider {
     public ChangeLog getChangeLog();
+    public boolean isInitialized();
+    public void initialize() throws MigrationProviderInitException;
 }

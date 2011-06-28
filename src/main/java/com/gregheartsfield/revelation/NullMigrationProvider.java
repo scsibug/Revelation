@@ -18,4 +18,12 @@ public class NullMigrationProvider implements MigrationProvider {
     public ChangeLog getChangeLog() {
         return cl;
     }
+
+    public boolean isInitialized() {
+        return true;
+    }
+
+    public void initialize() throws MigrationProviderInitException {
+        return;
+    }
 }
