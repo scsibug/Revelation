@@ -1,15 +1,25 @@
 package com.gregheartsfield.revelation;
 
+import java.util.List;
+import java.util.ArrayList;
+import com.gregheartsfield.revelation.defect.*;
+
 /**
  * Analyzer for changelogs to determine what should be run to bring a system up-to-date.
+ * Plans are a list of proposed changes (the plan), with associated defects which inform the user
+ * about whether they should execute the plan.  For example, we detect whether migration hashes
+ * have changed since they were run, and if back-dated migrations have been introduced.
+ *
  */
 
 public class MigrationPlan {
     ChangeLog migrations = null;
     ChangeLog applied = null;
 
-    ChangeLog plan = null;
-    
+    ChangeLog plan = new ChangeLog();
+
+    List<Defect> defects = new ArrayList<Defect>();
+
     // Given migration definitions, and what has already been applied,
     // produce a plan to bring target completely up-to-date.
     public MigrationPlan(ChangeLog migrations, ChangeLog applied) {
@@ -22,5 +32,13 @@ public class MigrationPlan {
     public MigrationPlan(ChangeLog migrations, ChangeLog applied, ChangeSet result) {
         
     }    
+    
+    public ChangeLog getPlan() {
+        return plan;
+    }
+
+    public List<Defect> getDefects() {
+        return defects;
+    }
 
 }
