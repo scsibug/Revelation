@@ -108,4 +108,18 @@ public class MigrationPlanTest {
         assertEquals("ChangeSet is B.", csb, mp.getPlan().get(0));
     }
 
+    @Test
+    public void hashMismatch() {
+        defn.addChangeSet(csa);
+        // make changeset A & B have the same ID, but different hashes
+        csa.setHash("x3");
+        csb.setHash("t8");
+        csa.setId("a");
+        csb.setId("a");
+        applied.addChangeSet(csb);
+        MigrationPlan mp = new MigrationPlan(defn, applied);
+        assertEquals("Hash defect", 1, mp.getDefects().size());
+        assertEquals("No changes in plan", 0, mp.getPlan().size());
+    }
+
 }
