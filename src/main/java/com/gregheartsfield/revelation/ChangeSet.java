@@ -40,5 +40,8 @@ public abstract class ChangeSet {
 
     abstract public void apply();
     abstract public void unapply();
-
+    
+    public String toString() {
+        return "ChangeSet "+getId()+", hash="+getHash();
+    }
 }
