@@ -70,4 +70,15 @@ public class MigrationPlanTest {
         assertEquals("Second migration in plan is C", csc, mp.getPlan().get(1));
     }
 
+    @Test
+    public void upToDatePlan() {
+        defn.addChangeSet(csa);
+        defn.addChangeSet(csb);
+        applied.addChangeSet(csa);
+        applied.addChangeSet(csb);
+        MigrationPlan mp = new MigrationPlan(defn, applied);
+        assertEquals("No defects", 0, mp.getDefects().size());
+        assertEquals("No work in plan", 0, mp.getPlan().size());
+    }
+
 }
