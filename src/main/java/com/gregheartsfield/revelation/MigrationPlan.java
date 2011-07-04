@@ -15,6 +15,7 @@ import com.gregheartsfield.revelation.defect.*;
 public class MigrationPlan {
     ChangeLog migrations = null;
     ChangeLog applied = null;
+    ChangeSet target = null;
 
     ChangeLog plan = new ChangeLog();
 
@@ -32,9 +33,18 @@ public class MigrationPlan {
     // final changeset, produce a plan to upgrade (or downgrade) the
     // target system.
     public MigrationPlan(ChangeLog migrations, ChangeLog applied, ChangeSet result) {
-        // Find a common starting point        
+        this.migrations = migrations;
+        this.applied = applied;
+        this.target = target;
+        // Find a common starting point (last change applied)
+        // Verify order of already-applied changes
+        //   Verify hashes match
     }    
-    
+
+    // Verify all applied changes exist in migration definition
+    public void verifyAppliedChanges() {
+    }
+
     public ChangeLog getPlan() {
         return plan;
     }

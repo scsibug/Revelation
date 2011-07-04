@@ -21,6 +21,10 @@ public abstract class ChangeSet {
     public String getId() {
         return id;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     
     public Date getCreationDate() {
         return creation_date;
@@ -28,6 +32,10 @@ public abstract class ChangeSet {
 
     public void setCreationDate(Date creation_date) {
         this.creation_date = creation_date;
+    }
+
+    public String getHash() {
+        return "0";
     }
 
     abstract public void apply();
