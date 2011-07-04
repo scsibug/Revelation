@@ -50,15 +50,18 @@ public class MigrationPlan {
                 ChangeSet a = applied.get(i);
                 // we expect the ID to match
                 if (a.getId() != m.getId()) {
+                    logger.info("Found out-of-order defect");
                     Defect ood = new OutOfOrderDefect();
                     ood.addDefectiveChangeSet(m);
                     ood.addDefectiveChangeSet(a);
+                    defects.add(ood);
                 } else {
                     // we expect hashes to match
                     if (a.getHash() != m.getHash()) {
                         Defect hm = new HashMismatchDefect();
                         hm.addDefectiveChangeSet(m);
                         hm.addDefectiveChangeSet(a);
+                        defects.add(hm);
                     }
                 }
             } else {

@@ -81,4 +81,15 @@ public class MigrationPlanTest {
         assertEquals("No work in plan", 0, mp.getPlan().size());
     }
 
+    @Test
+    public void outOfOrderPlan() {
+        defn.addChangeSet(csb);
+        defn.addChangeSet(csa);
+        applied.addChangeSet(csa);
+        applied.addChangeSet(csb);
+        MigrationPlan mp = new MigrationPlan(defn, applied);
+        assertEquals("Out of order defect", 2, mp.getDefects().size());
+        assertEquals("No changes in plan", 0, mp.getPlan().size());
+    }
+
 }
