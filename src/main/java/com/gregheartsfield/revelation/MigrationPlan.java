@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.ArrayList;
 import com.gregheartsfield.revelation.defect.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Analyzer for changelogs to determine what should be run to bring a system up-to-date.
  * Plans are a list of proposed changes (the plan), with associated defects which inform the user
@@ -13,6 +16,7 @@ import com.gregheartsfield.revelation.defect.*;
  */
 
 public class MigrationPlan {
+    final Logger logger = LoggerFactory.getLogger(MigrationPlan.class);
     ChangeLog migrations = null;
     ChangeLog applied = null;
     ChangeSet target = null;
