@@ -13,9 +13,21 @@ import com.google.inject.Inject;
 public class MigrationPlanTest {
     Injector injector;
 
+    ChangeLog defn;
+    ChangeLog applied;
+    ChangeSet csa, csb, csc;
     @Before
     public void setup() {
         injector = Guice.createInjector(new Env());
+        // Sample data
+        defn = new ChangeLog();
+        applied = new ChangeLog();
+        csa = injector.getInstance(NullChangeSet.class);
+        csb = injector.getInstance(NullChangeSet.class);
+        csc = injector.getInstance(NullChangeSet.class);
+        csa.setId("a");
+        csb.setId("b");
+        csc.setId("c");
     }
 
     @After
@@ -43,14 +55,6 @@ public class MigrationPlanTest {
 
     @Test
     public void perfectPlan() {
-        ChangeLog defn = new ChangeLog();
-        ChangeLog applied = new ChangeLog();
-        ChangeSet csa = injector.getInstance(NullChangeSet.class);
-        csa.setId("a");
-        ChangeSet csb = injector.getInstance(NullChangeSet.class);
-        csb.setId("b");
-        ChangeSet csc = injector.getInstance(NullChangeSet.class);
-        csc.setId("c");
         // Add 'a', 'b', 'c' to migration definition.
         defn.addChangeSet(csa);
         defn.addChangeSet(csb);
