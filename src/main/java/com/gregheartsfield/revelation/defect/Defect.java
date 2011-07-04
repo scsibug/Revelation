@@ -25,8 +25,8 @@ public class Defect {
     }
 
     // Return human-readable description of the defect (multi-line)
-    String describe() {
-        StringBuffer d = new StringBuffer(this.describeShort());
+    String description() {
+        StringBuffer d = new StringBuffer(this.descriptionShort());
         d.append("\n");
         for (ChangeSet cs : defects) {
             d.append("\tCS: "+cs.getId()+"\n");
@@ -35,7 +35,7 @@ public class Defect {
     }
 
     // Return human-readable description of the defect (single-line)
-    String describeShort() {
+    String descriptionShort() {
         return this.getDefectType() + ": " + this.getDefectCount() + " defects found.";
     }
 }

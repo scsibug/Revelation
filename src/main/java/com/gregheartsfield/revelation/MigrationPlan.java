@@ -55,6 +55,11 @@ public class MigrationPlan {
                     ood.addDefectiveChangeSet(m);
                     ood.addDefectiveChangeSet(a);
                     defects.add(ood);
+                    // if it isn't in the applied list, we need to add
+                    // it to the plan.
+                    if (applied.getById(m.getId()) == null) {
+                        plan.add(m);
+                    }
                 } else {
                     // we expect hashes to match
                     if (a.getHash() != m.getHash()) {
@@ -62,13 +67,25 @@ public class MigrationPlan {
                         hm.addDefectiveChangeSet(m);
                         hm.addDefectiveChangeSet(a);
                         defects.add(hm);
+                    } else {
+                        // ID's and hashes match.
+                        logger.info("CS "+m+" and "+a+" match");
                     }
                 }
             } else {
-                plan.add(m);
+                // automatically add items to the plan if they have
+                // never been applied.
+                if (applied.getById(m.getId()) == null) {
+                    plan.add(m);
+                } else {
+                    // we've found another out of order changeset?
+                    Defect ood = new OutOfOrderDefect();
+                    ood.addDefectiveChangeSet(m);
+                    defects.add(ood);
+                }
             }
         }
-    }    
+    }
 
     // Verify all applied changes exist in migration definition
     public void verifyAppliedChanges() {

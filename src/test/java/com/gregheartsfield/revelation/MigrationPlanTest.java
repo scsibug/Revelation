@@ -51,6 +51,8 @@ public class MigrationPlanTest {
         List<Defect> defects = mp.getDefects();
         assertNotNull(defects);
         assertEquals(0, defects.size());
+        assertNotNull(mp.getPlan());
+        assertEquals(0, mp.getPlan().size());
     }
 
     @Test
@@ -90,6 +92,20 @@ public class MigrationPlanTest {
         MigrationPlan mp = new MigrationPlan(defn, applied);
         assertEquals("Out of order defect", 2, mp.getDefects().size());
         assertEquals("No changes in plan", 0, mp.getPlan().size());
+    }
+
+    @Test
+    public void outOfOrderWithWorkPlan() {
+        defn.addChangeSet(csb);
+        defn.addChangeSet(csa);
+        applied.addChangeSet(csa);
+        MigrationPlan mp = new MigrationPlan(defn, applied);
+        // one defect for each defined migration.  The first is for
+        // the already applied migration, and another for the one
+        // added to the plan.
+        assertEquals("Out of order defect.", 2, mp.getDefects().size());
+        assertEquals("One change in plan.", 1, mp.getPlan().size());
+        assertEquals("ChangeSet is B.", csb, mp.getPlan().get(0));
     }
 
 }

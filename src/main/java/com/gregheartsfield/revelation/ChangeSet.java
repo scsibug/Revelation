@@ -9,6 +9,7 @@ import java.util.Date;
 public abstract class ChangeSet {
     String id; // globally unique identifier
     Date creation_date;
+    String hash = "0"; // default hash
     boolean is_baseline = false; // Accounts for all previous changesets
 
     public ChangeSet() {
@@ -35,7 +36,11 @@ public abstract class ChangeSet {
     }
 
     public String getHash() {
-        return "0";
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
     }
 
     abstract public void apply();

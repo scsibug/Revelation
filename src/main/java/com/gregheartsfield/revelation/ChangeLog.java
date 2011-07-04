@@ -18,6 +18,15 @@ public class ChangeLog extends ArrayList<ChangeSet> {
         this.add(cs);
     }
 
+    public ChangeSet getById(String id) {
+        for (ChangeSet cs : this) {
+            if (cs.getId() == id) {
+                return cs;
+            }
+        }
+        return null;
+    }
+
     public ChangeSet latestChangeSet() {
         if (this.isEmpty()) {
             return null;
