@@ -43,6 +43,28 @@ public class MigrationPlan {
         // Find a common starting point (last change applied)
         // Verify order of already-applied changes
         //   Verify hashes match
+        for(int i = 0; i < migrations.size(); i++) {
+            ChangeSet m = migrations.get(i);
+            // try to match each migration def with an already applied migration.
+            if (applied.size() > i) {
+                ChangeSet a = applied.get(i);
+                // we expect the ID to match
+                if (a.getId() != m.getId()) {
+                    Defect ood = new OutOfOrderDefect();
+                    ood.addDefectiveChangeSet(m);
+                    ood.addDefectiveChangeSet(a);
+                } else {
+                    // we expect hashes to match
+                    if (a.getHash() != m.getHash()) {
+                        Defect hm = new HashMismatchDefect();
+                        hm.addDefectiveChangeSet(m);
+                        hm.addDefectiveChangeSet(a);
+                    }
+                }
+            } else {
+                plan.add(m);
+            }
+        }
     }    
 
     // Verify all applied changes exist in migration definition
