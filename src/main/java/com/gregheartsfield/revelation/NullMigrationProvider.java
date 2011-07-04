@@ -24,6 +24,5 @@ public class NullMigrationProvider implements MigrationProvider {
     }
 
     public void initialize() throws MigrationProviderInitException {
-        return;
     }
 }
