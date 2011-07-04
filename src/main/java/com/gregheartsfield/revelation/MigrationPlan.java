@@ -23,14 +23,16 @@ public class MigrationPlan {
     // Given migration definitions, and what has already been applied,
     // produce a plan to bring target completely up-to-date.
     public MigrationPlan(ChangeLog migrations, ChangeLog applied) {
-        // Find a common starting point
+        // Call other constructor, with the latest changeset from the
+        // list of migrations.
+        this(migrations, applied, migrations.latestChangeSet());
     }
 
     // Given migration defs, what has been applied, and a desired
     // final changeset, produce a plan to upgrade (or downgrade) the
     // target system.
     public MigrationPlan(ChangeLog migrations, ChangeLog applied, ChangeSet result) {
-        
+        // Find a common starting point        
     }    
     
     public ChangeLog getPlan() {

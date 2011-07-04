@@ -23,6 +23,12 @@ public class MigrationPlanTest {
         ChangeLog plan = mp.getPlan();
         assertNotNull(plan);
         assertEquals(0, plan.size());
+    }
+
+    @Test
+    public void emptyPlanDefects() {
+        // do the right thing with no changelogs
+        MigrationPlan mp = new MigrationPlan(new ChangeLog(), new ChangeLog());
         List<Defect> defects = mp.getDefects();
         assertNotNull(defects);
         assertEquals(0, defects.size());

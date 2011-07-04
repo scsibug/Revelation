@@ -18,4 +18,11 @@ public class ChangeLog extends ArrayList<ChangeSet> {
         this.add(cs);
     }
 
+    public ChangeSet latestChangeSet() {
+        if (this.isEmpty()) {
+            return null;
+        }
+        int last_mig_index = this.size()-1;
+        return this.get(last_mig_index);
+    }
 }
