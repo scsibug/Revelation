@@ -122,4 +122,19 @@ public class MigrationPlanTest {
         assertEquals("No changes in plan", 0, mp.getPlan().size());
     }
 
+    @Test
+    public void partialPlan() {
+        // only apply 2 out of 3 migrations.
+        defn.addChangeSet(csa);
+        defn.addChangeSet(csb);
+        defn.addChangeSet(csc);
+        // create the plan
+        MigrationPlan mp = new MigrationPlan(defn, applied,csb);
+        // plan should have zero defects, and 2 migrations ('a' and 'b')
+        assertEquals("No defects", 0, mp.getDefects().size());
+        assertEquals("2 changesets in plan", 2, mp.getPlan().size());
+        assertEquals("First migration in plan is A", csa, mp.getPlan().get(0));
+        assertEquals("Second migration in plan is B", csb, mp.getPlan().get(1));
+    }
+
 }

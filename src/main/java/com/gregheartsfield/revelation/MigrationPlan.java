@@ -43,7 +43,7 @@ public class MigrationPlan {
         // Find a common starting point (last change applied)
         // Verify order of already-applied changes
         //   Verify hashes match
-        for(int i = 0; i < migrations.size(); i++) {
+        for(int i = 0; i < (migrations.indexOf(result)+1); i++) {
             ChangeSet m = migrations.get(i);
             // try to match each migration def with an already applied migration.
             if (applied.size() > i) {
