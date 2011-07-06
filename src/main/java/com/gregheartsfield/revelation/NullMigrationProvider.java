@@ -11,7 +11,7 @@ public class NullMigrationProvider implements MigrationProvider {
         cl = new ChangeLog();
     }
 
-    public void addChangeSet(NullChangeSet cs) {
+    public void addChangeSet(ChangeSet cs) {
         cl.add(cs);
     }
 
